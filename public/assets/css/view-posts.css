@@ -1,0 +1,46 @@
+html {
+    box-sizing: border-box;
+}
+
+
+.doc-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    width: 30%;
+    align-items: center;
+    height: 200px;
+    justify-content: center;
+    box-shadow:  0 2px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+.post:hover {
+    background-color: #7ee0f6;
+}
+.post-link {
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.post-link:visited {
+    color: blue
+}
+
+.post-link:hover {
+    text-decoration: underline;
+}

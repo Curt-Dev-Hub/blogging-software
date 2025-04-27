@@ -1,0 +1,81 @@
+html {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+body {
+    /* font-family: Arial, sans-serif; */
+    background-color: #e6f2ff; /* A calming green-blue background */
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 200px;
+}
+
+button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type=submit] {
+    background-color: #4CAF50; 
+}
+button[type=submit]:hover {
+    background-color:#3e8e41;
+}
+
+button[type=button] {
+    background-color: blue;
+}
+
+button[type=button]:hover {
+    background-color: yellow;
+    color: black;
+}
+
+.error, .error-text {
+    color: red;
+    font-weight: 700;
+}
+
+.error-text {
+    font-weight: 500;
+    font-size: 22px;
+    text-decoration: underline;
+}
+
+.error {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.button-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 45px;
+}

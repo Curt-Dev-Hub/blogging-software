@@ -1,0 +1,57 @@
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: blanchedalmond;
+    height: 100vh;
+}
+
+
+h1 {
+    transform: skewX(-23deg);
+    text-decoration: underline;
+}
+
+h2 {
+    transform: skewX(-23deg);
+    color: #7b77df99;
+}
+
+main {
+    
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post-list {
+    margin-bottom: 20px;
+    border: solid 2px #7b77df99;
+    border-radius: 3px;
+    padding-left: 30px;
+    text-align: center;
+}
+
+.post-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.post-list li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
+.post-actions a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+

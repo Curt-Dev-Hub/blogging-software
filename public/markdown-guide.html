@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive Markdown cheat sheet covering basic and extended syntax elements.">
+    <meta name="keywords" content="Markdown, cheat sheet, syntax, guide, HTML, CSS">
+    <meta name="author" content="Curtis King">
+    <title>Markdown Cheat Sheet | Comprehensive Guide</title>
+    <link rel="stylesheet" href="assets/css/markdown-guide.css">
+    <link rel="canonical" href="local/blogging-software/markdown-cheat-sheet">
+</head>
+<body>
+    <header>
+        <h1 id="main-heading">Markdown Cheat Sheet</h1>
+        <p>Thanks for visiting <a href="https://www.markdownguide.org" aria-label="Visit The Markdown Guide">The Markdown Guide</a>! This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for <a href="https://www.markdownguide.org/basic-syntax/">basic syntax</a> and <a href="https://www.markdownguide.org/extended-syntax/">extended syntax</a>.</p>
+    </header>
+    <main>
+        <section aria-labelledby="basic-syntax">
+            <h2 id="basic-syntax">Basic Syntax</h2>
+            <p>These are the elements outlined in John Gruber's original design document. All Markdown applications support these elements.</p>
+            <article aria-labelledby="heading">
+                <h3>Heading</h3>
+                <p><code># H1</code></p>
+                <h1>H1</h1>
+                <p><code>## H2</code></p>
+                <h2>H2</h2>
+                <p><code>### H3</code></p>
+                <h3>H3</h3>
+            </article>
+            <article aria-labelledby="bold">
+                <h3>### Bold</h3>
+                <p><code>**bold text**</code></p>
+                <p><strong>bold text</strong></p>
+            </article>
+            <article aria-labelledby="italic">
+                <h3>### Italic</h3>
+                <p><code>*italicized text*</code></p>
+                <p><em>italicized text</em></p>
+            </article>
+            <article aria-labelledby="blockquote">
+                <h3>### Blockquote</h3>
+                <p><code>> blockquote</code></p>
+                <blockquote>blockquote</blockquote>
+            </article>
+            <article aria-labelledby="ordered-list">
+                <h3>### Ordered List</h3>
+                <p><code>1. First item<br>2. Second item<br>3. Third item</code></p>
+                <ol>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ol>
+            </article>
+            <article aria-labelledby="ordered-list">
+                <h3>### Unordered List</h3>
+                <p><code>- First item<br>- Second item<br>- Third item</code></p>
+                <ul>
+                    <li>First item</li>
+                    <li>Second item</li>
+                    <li>Third item</li>
+                </ul>
+            </article>
+            <article aria-labelledby="code">
+                <h3>### Code</h3>
+                <p><code>`code`</code></p>
+                <p><code>code</code></p>
+            </article>
+            <article aria-labelledby="horizontal-rule">
+                <h3>### Horizontal Rule</h3>
+                <p><code>---</code></p>
+                <hr>
+            </article>
+            <article><h3>### Link</h3>
+                <p><code>[Markdown Guide](https://www.markdownguide.org)</code></p>
+                <p><a href="https://www.markdownguide.org">Markdown Guide</a></p>
+            </article>    
+            <article>
+                <h3>### Image</h3>
+                <p><code>![alt text](https://www.markdownguide.org/assets/images/tux.png)</code></p>
+                <img src="https://www.markdownguide.org/assets/images/tux.png" alt="alt text">
+            </article>
+        </section>
+
+        <section aria-labelledby="extended-syntax">
+            <h2>## Extended Syntax</h2>
+            <p>These elements extend the basic syntax by adding additional features. Not all Markdown applications support these elements.</p>
+            <article aria-labelledby="table">
+                <h3>### Table</h3>
+                <p><code>| Syntax | Description |<br>| ----------- | ----------- |<br>| Header | Title |<br>| Paragraph | Text |</code></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Syntax</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Header</td>
+                            <td>Title</td>
+                        </tr>
+                        <tr>
+                            <td>Paragraph</td>
+                            <td>Text</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+            <article aria-labelledby="fenced-code-block">
+                <h3>### Fenced Code Block</h3>
+                <p><code>```<br>{ "firstName": "John", "lastName": "Smith", "age": 25 }<br>```</code></p>
+                <pre><code>{ "firstName": "John", "lastName": "Smith", "age": 25 }</code></pre>
+            </article>
+            <article aria-labelledby="footnote">
+                <h3>### Footnote</h3>
+                <p><code>Here's a sentence with a footnote. [^1]<br>[^1]: This is the footnote.</code></p>
+                <p>Here's a sentence with a footnote. <sup id="fnref1"><a href="#fn1">1</a></sup></p>
+                <div id="fn1">
+                    <p>1. This is the footnote.</p>
+                </div>
+            </article>
+            <article aria-labelledby="heading-id">
+                <h3>### Heading ID</h3>
+                <p><code>### My Great Heading {#custom-id}</code></p>
+                <h3 id="custom-id">My Great Heading</h3>
+            </article>
+            <article aria-labelledby="definition-list">
+                <h3>### Definition List</h3>
+                <p><code>term:<br>definition</code></p>
+                <dl>
+                    <dt>term</dt>
+                    <dd>definition</dd>
+                </dl>
+            </article>
+            <article aria-labelledby="strikethrough">
+                <h3>### Strikethrough</h3>
+                <p><code>~~The world is flat.~~</code></p>
+                <p><del>The world is flat.</del></p>
+            </article>
+            <article aria-labelledby="task-list">
+                <h3>### Task List</h3>
+                <p><code>- [x] Write the press release<br>- [ ] Update the website<br>- [ ] Contact the media</code></p>
+                <ul>
+                    <li><input type="checkbox" checked> Write the press release</li>
+                    <li><input type="checkbox"> Update the website</li>
+                    <li><input type="checkbox"> Contact the media</li>
+                </ul>
+            </article>
+            <article aria-labelledby="emoji">
+                <h3>### Emoji</h3>
+                <p><code>That is so funny! :joy:<br>(See also <a href="https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji">Copying and Pasting Emoji</a>)</code></p>
+                <p>That is so funny! 😂 (See also <a href="https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji">Copying and Pasting Emoji</a>)</p>
+            </article>
+            <article aria-labelledby="text-highlight">
+                <h3>### Highlight</h3>
+                <p><code>I need to highlight these ==very important words==.</code></p>
+                <p>I need to highlight these <mark>very important words</mark>.</p>
+            </article>
+            <article aria-labelledby="subscript">
+                <h3>### Subscript</h3>
+                <p><code>H~2~O</code></p>
+                <p>H<sub>2</sub>O</p>
+            </article>
+            <article aria-labelledby="superscript">
+                <h3>### Superscript</h3>
+                <p><code>X^2^</code></p>
+                <p>X<sup>2</sup></p>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Curtis King. All rights reserved.</p>
+    </footer>
+</body>
+</html>

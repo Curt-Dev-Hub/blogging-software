@@ -1,0 +1,109 @@
+html {
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 9px;
+}
+header {
+    font-size: 2rem;
+}
+h1 {
+    transform: skewX(-23deg);
+    text-decoration: underline;
+    text-align: center;
+    font-size: 4rem;
+}
+.dashboard-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: blanchedalmond;
+    font-size: 2rem;
+}
+
+.choice-group {
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* code can be reduced for the below 2 + possibly moved to another stylesheet */
+button[type="button"] {
+    border: 2px #7b77df99 solid;
+    background-color: #a5d0de;
+}
+
+button[type="button"], .logout-button {
+    margin: 10px;
+    outline: none;
+    border-radius: 4px;
+    padding: 12px;
+    font-weight: bold;
+    transition: all 0.7s;
+}
+.logout-button {
+    background-color: cornflowerblue;
+    transition: all 0.5s;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+.success-message {
+    background-color: #28a745;
+    color: black;
+    padding: 20px;
+    font-size: 2rem;
+    margin-top: 0.25rem;
+}
+
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  
+
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {  
+
+}
+
+@media (hover: hover) {
+    button[type="button"]:hover {
+        background: linear-gradient(90deg, rgba(4,3,24,0) 0%, rgba(218,24,186,1) 35%);
+        transform: translateY(-4px);
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.3);
+    }
+    .logout-button:hover {
+        background-color: yellow;
+    }
+}

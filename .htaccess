@@ -1,0 +1,46 @@
+# Security and performance rules
+# Must be deployed with the application
+# Last updated: 2025-04-21
+
+<Files "dbconfig.php">
+    Require all denied
+</Files>
+
+<Files "process_post.php">
+    Require all denied
+</Files>
+
+<Files "user_posts.php">
+    Require all denied
+</Files>
+
+<Files "login_process.php">
+    Require all denied
+</Files>
+
+<!-- <Files "register_process.php">
+    **Apache 2.2 syntax**
+    Order Allow, Deny
+    Deny from all
+</Files> -->
+
+<Files "register_process.php">
+    Require all denied
+</Files>
+
+<Files "logout-process.php">
+    Require all denied
+</Files>
+
+
+##### Optimize default expiration time - BEGIN
+
+
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ## CSS and JS expiration: 1 day after request
+    ExpiresByType text/css "now plus 1 day"
+</IfModule>
+
+##### Optimize default expiration time - END

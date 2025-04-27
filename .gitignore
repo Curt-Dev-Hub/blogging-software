@@ -1,0 +1,34 @@
+#ignore Docker Volumes
+mysql-data/
+docker-volumes/
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+
+# App 
+config/
+
+# Docker Compose
+docker-compose.override.yml
+
+temp/*
+
+# specific files
+notes.txt  
+sql_change_port.txt
+docker-compose.yml
+.env
+*.secret
