@@ -33,7 +33,7 @@ require_once '../includes/header.php';
             <button type="button" onclick="window.location.href = '../editor/post/post.php';">Create New Post</button>
             <button type="button" onclick="window.location.href = '../public/view-posts.php';">View My Posts</button>
             <button type="button">Delete Post</button>
-            <button type="button" onclick="window.location.href = './post/my-draft-posts.php';">Go to Drafts</button>
+            <button type="button" onclick="window.location.href = '../editor/post/my-draft-posts.php';">Go to Drafts</button>
         </div>
         <a href="../src/controllers/logout-process.php">Logout</a>
     </div>

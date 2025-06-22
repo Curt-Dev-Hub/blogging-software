@@ -5,9 +5,8 @@
 //2. Can fetch a specific post and return the html content from the database
 // 3. Can fetch all posts for a user and return the html content from the database
 
-require_once '../config/dbconfig.inc.php';
-require_once '../config/headers.inc.php';
-
+require_once __DIR__ . '/../../config/dbconfig.inc.php';
+require_once __DIR__ . '/../../config/headers.inc.php';
 
 function numberOfPosts($user_id)
 {
@@ -60,4 +59,53 @@ function getSinglePost($post_id, $user_id)
     } else {
         return null; // Post not found or access denied
     }
+}
+
+function getDrafts($user_id) 
+{
+    global $conn;
+    $stmt = $conn->prepare("
+        SELECT * FROM posts
+        WHERE user_id = ? AND is_draft = 1
+        ORDER BY last_updated DESC
+    ");
+    $stmt->execute([$user_id]);
+    $result = $stmt->get_result();
+    $rows = [];
+    while ($row = $result->fetch_assoc()) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
+
+function getDraftById($post_id, $user_id)
+{
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM posts 
+    WHERE id = :post_id
+    AND user_id = :user_id
+    AND is_draft = 1 
+    LIMIT 1");
+
+    if (!$stmt)
+    {
+        error_log("Prepare failed: " . $conn->error);
+        return false;
+    }
+
+    $stmt->bind_param("ii", $post_id, $user_id);
+
+    if (!$stmt->execute())
+    {
+        error_log("Draft fetch error: " . $stmt->error);
+        $stmt->close();
+        return false;
+    }
+
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+
+    return $row; // will return null if no row found, or the associative array if found
+
 }

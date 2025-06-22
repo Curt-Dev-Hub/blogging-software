@@ -3,12 +3,13 @@
 session_start(); 
 
 
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    echo "Please sign in";
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) 
+{
     header('Location: admin-login.php');
-    // redirect to admin login page 
     exit;
 } 
+
+require_once '../../src/controllers/fetch_posts.php';
 
 if (isset($_SESSION['errors'])) 
 {
@@ -19,6 +20,19 @@ if (isset($_SESSION['errors']))
         '</div>';
     }
     unset($_SESSION['errors']);
+}
+
+// want to pre-fill the form if editing a draft - working on this 
+$draft = [];
+if (isset($_GET['draft_id'])) 
+{
+    $draft = getDraftById($_GET['draft_id'], $_SESSION['user_id']);
+    if (!$draft)
+    {
+        $_SESSION['errors'] = ["Draft not found or access denied"];
+        header("Location: my-draft-posts.php");
+        exit;
+    }
 }
 
 ?>
@@ -52,8 +66,9 @@ if (isset($_SESSION['errors']))
         <textarea name="content" id="content" required></textarea>
 
         <div class="button-wrap">
-            <button type="submit">Create Post</button>
-            <button type="button">Save Progress As Draft</button>
+            <button type="submit" name="action" value="publish">Create Post</button>
+            <button type="submit" name="action" value="draft">Save Progress As Draft</button>
+            <input type="hidden" name="post_id" value="<?= $draft["id"] ?? '' ?>">
         </div>
     </form>
 </body>

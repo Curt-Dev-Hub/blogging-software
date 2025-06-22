@@ -43,12 +43,24 @@ if($numPosts == 0)
         echo "<img class='doc-icon' src='./assets/images/text-document-svgrepo-com.svg' alt='Post'>";
         echo "<h2>" . htmlspecialchars($post['title']) . "</h2>";
         echo "</a>";
+        echo "<div class='btn-group'>";
+        echo "<a href='edit-post.php?id={$post['id']}' class='btn btn-primary'>Edit</a>";
+        echo "<button onclick='confirmDelete({$post['id']})' class='btn btn-danger'>Delete</button>";
+        echo "</div>";
         echo "</div>";
     }
     echo "</div>";
 }
 
 ?>
+
+<script>
+function confirmDelete(postId) {
+    if (confirm('Are you sure you want to delete this post?')) {
+        window.location.href = '/blogging-software/src/controllers/delete_posts.php?id=' + postId;
+    }
+}
+</script>
 </body>
 </html>
 

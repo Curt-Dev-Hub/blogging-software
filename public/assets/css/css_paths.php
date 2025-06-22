@@ -7,3 +7,4 @@ define('CSS_REGISTRATION', '/blogging-software/public/assets/css/admin-login-reg
 define('CSS_ADMIN_DASHBOARD', '/blogging-software/public/assets/css/admin-dashboard.css');
 define('CSS_MARKDOWN_GUIDE', '/blogging-software/public/assets/css/markdown-guide.css');
 define('CSS_VIEW_POST', '/blogging-software/public/assets/css/your-post.css');
+define('CSS_MY_DRAFTS', '/blogging-software/public/assets/css/my-draft-posts.css');
