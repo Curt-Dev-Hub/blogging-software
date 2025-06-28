@@ -78,34 +78,33 @@ function getDrafts($user_id)
     return $rows;
 }
 
-function getDraftById($post_id, $user_id)
-{
+function getDraftById($post_id, $user_id) {
     global $conn;
-    $stmt = $conn->prepare("SELECT * FROM posts 
-    WHERE id = :post_id
-    AND user_id = :user_id
-    AND is_draft = 1 
-    LIMIT 1");
-
-    if (!$stmt)
-    {
+    
+    $stmt = $conn->prepare("
+        SELECT * FROM posts 
+        WHERE id = ?
+        AND user_id = ?
+        AND is_draft = 1 
+        LIMIT 1
+    ");
+    
+    if (!$stmt) {
         error_log("Prepare failed: " . $conn->error);
         return false;
     }
-
+    
     $stmt->bind_param("ii", $post_id, $user_id);
-
-    if (!$stmt->execute())
-    {
-        error_log("Draft fetch error: " . $stmt->error);
+    
+    if (!$stmt->execute()) {
+        error_log("Execution failed: " . $stmt->error);
         $stmt->close();
         return false;
     }
-
+    
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
     $stmt->close();
-
-    return $row; // will return null if no row found, or the associative array if found
-
+    
+    return $row;
 }

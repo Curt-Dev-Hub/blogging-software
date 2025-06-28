@@ -26,13 +26,13 @@ $markdown_content = htmlspecialchars_decode(filter_input(INPUT_POST, 'content', 
 $action = filter_input(INPUT_POST, 'action', FILTER_UNSAFE_RAW) ?? 'publish'; // Default to 'publish' if not set
 
 error_log("Raw title: " . $title);
-error_log("DB content: " . $html_content);
+
 
 $is_draft = ($action == 'draft') ? 1 : 0; 
 
 $Parsedown = new Parsedown();
 $html_content = $Parsedown->text($markdown_content);
-
+error_log("DB content: " . $html_content);
 
 // validation
 $errors = [];
@@ -50,11 +50,10 @@ if (!empty($errors))
 
 $user = $_SESSION['user_id'];
 
-$is_draft_post = 'false';
-
-if ($post_id && $is_draft)
-{
-    try {
+try {
+    if ($post_id && $is_draft)
+    {
+        // update existing draft
         $stmt = $conn->prepare("
             UPDATE posts SET
             title = ?,
@@ -72,17 +71,29 @@ if ($post_id && $is_draft)
             $is_draft,
             $post_id,
             $_SESSION['user_id']
-    );
+        );
+    } else {
+        // Create new post / draft - 25/06/2025
+        $stmt = $conn->prepare("INSERT INTO posts
+        (user_id, title, summary, content, is_draft)
+        VALUES (?,?,?,?,?)");
+        
+        $stmt->bind_param("isssi", $_SESSION['user_id'], $title, $summary, $html_content, $is_draft);
+    }    
     if($stmt->execute())
     {
-        $_SESSION['success_message'] = 'Draft updated!';
-        header('Location: ../../editor/post/my-draft-posts.php');
+        $_SESSION['success_message'] = $is_draft ? 'Draft saved successfully!' : 'Post saved successfully!';
+        header('Location: ' . ($is_draft ? '/blogging-software/editor/post/my-draft-posts.php' 
+        : '/blogging-software/public/view-posts.php'));
+        exit;
     } else {
         throw new Exception($stmt->error);
     }   
     } catch (Exception $e) {
-        $_SESSION['errors'][] = 'Draft update failed: ' . $e->getMessage();
+        error_log("Save failed: " . $e->getMessage());
+        $_SESSION['errors'] = ['Failed to save: ' . $e->getMessage()];
         header("Location: ../../editor/post/post.php?draft_id=$post_id");
+        exit;
     }
-    exit;
-}    
+    
+    

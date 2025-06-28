@@ -51,7 +51,6 @@ require_once '../../includes/header.php';
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
-    
     }
     ?>
 </div>
