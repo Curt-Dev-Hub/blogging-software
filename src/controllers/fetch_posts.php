@@ -1,10 +1,5 @@
 <?php
 
-// This file can have multiple purposes: 
-// 1. Can fetch the number of posts for a user and return the count, we can then render the matching number of file images on the view posts page
-//2. Can fetch a specific post and return the html content from the database
-// 3. Can fetch all posts for a user and return the html content from the database
-
 require_once __DIR__ . '/../../config/dbconfig.inc.php';
 require_once __DIR__ . '/../../config/headers.inc.php';
 
@@ -45,6 +40,16 @@ function getPostTitles($user_id)
         $titles[] = $row['title'];
     }
     return $titles;
+}
+
+//New addition - 06/07/2025
+function getPostById($post_id, $user_id) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT * FROM posts WHERE id = ? AND user_id = ? LIMIT 1");
+    $stmt->bind_param("ii", $post_id, $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
 }
 
 function getSinglePost($post_id, $user_id)

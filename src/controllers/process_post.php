@@ -51,7 +51,7 @@ if (!empty($errors))
 $user = $_SESSION['user_id'];
 
 try {
-    if ($post_id && $is_draft)
+    if ($post_id)
     {
         // update existing draft
         $stmt = $conn->prepare("
@@ -59,15 +59,19 @@ try {
             title = ?,
             summary = ?,
             content = ?,
+            markdown_content = ?,
             is_draft = ?,
-            updated_at = NOW()
+            last_updated = NOW()
             WHERE id = ? AND user_id = ?
         ");
 
-        $stmt->bind_param("sssiii",
+        //! Want To Add in Further Validation of Title, Summary and Content Before Binding
+
+        $stmt->bind_param("ssssiii",
             $title,
             $summary,
             $html_content,
+            $markdown_content,
             $is_draft,
             $post_id,
             $_SESSION['user_id']
@@ -75,10 +79,10 @@ try {
     } else {
         // Create new post / draft - 25/06/2025
         $stmt = $conn->prepare("INSERT INTO posts
-        (user_id, title, summary, content, is_draft)
-        VALUES (?,?,?,?,?)");
+        (user_id, title, summary, content, markdown_content, is_draft)
+        VALUES (?,?,?,?,?,?)");
         
-        $stmt->bind_param("isssi", $_SESSION['user_id'], $title, $summary, $html_content, $is_draft);
+        $stmt->bind_param("issssi", $_SESSION['user_id'], $title, $summary, $html_content, $markdown_content, $is_draft);
     }    
     if($stmt->execute())
     {

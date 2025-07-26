@@ -26,17 +26,6 @@ $page_css = [
 include_once '../includes/header.php';
 
 
-// $user_id = $_SESSION['user_id'] ?? null;
-// if(!$user_id)
-// {
-//     header('Location: admin-login.php');
-//     // could enter some code to display a message to the user that they need to login first
-//     exit;
-// }
-//--------------------------------------------------------------------------
-
-//changing the below to increase security
-
 if(!isset($_SESSION['user_id'])) {
     header('Location: /blogging-software/public/admin-login.php');
     exit;
@@ -48,22 +37,37 @@ $numPosts = numberOfPosts($user_id);
 
 if($numPosts == 0)
 {
+    echo "<div class='no-posts-message'>";
     echo "<p class='error-text'>You have no posts to view</p>";
+    echo "<a href='../editor/post/post.php' class='btn btn-primary'>Create Your First Post</a>";
+    echo "</div>";
 } else {
     $posts = fetchPosts($user_id);
-    echo "<p class='success-text'>You have $numPosts posts to view</p>";
+    // New section - 06/07/2025
+    echo "<div class='post-list-header'>";
+    echo "<h2>Your Posts <span class='badge'>{$numPosts}</span></h2>";
+    echo "<p class='success-text'>You have $numPosts posts to view</p>"; // original-may need to be removed
+    echo "<a href='../editor/post/post.php' class='btn btn-new-post'>+ New Post</a>";
+    echo "</div>";
+    
     // Fetch and display placeholder posts here
     echo "<div class='post-list'>";
     
     foreach($posts as $post)
     {
-        echo "<div class='post'>";
+        $is_draft = $post['is_draft'] ?? 0; //Draft status checking
+        
+        echo "<div class='post" . ($is_draft ? ' draft-post' : '') . "'>";
+        if($is_draft)
+        {
+            echo "<p class='draft-text'>Post is a draft.</p>";
+        }
         echo "<a class='post-link' href='your-post.php?id=" . htmlspecialchars($post['id']) . "'>";
         echo "<img class='doc-icon' src='./assets/images/text-document-svgrepo-com.svg' alt='Post'>";
         echo "<h2>" . htmlspecialchars($post['title']) . "</h2>";
         echo "</a>";
         echo "<div class='btn-group'>";
-        echo "<a href='edit-post.php?id={$post['id']}' class='btn btn-primary'>Edit</a>";
+        echo "<a href='../editor/post/post.php?id={$post['id']}' class='btn btn-primary'>Edit</a>";
         echo "<button onclick='confirmDelete({$post['id']})' class='btn btn-danger'>Delete</button>";
         echo "</div>";
         echo "</div>";
@@ -73,22 +77,26 @@ if($numPosts == 0)
 
 ?>
 
-<script>
-//error handling below is enhanced 
-
-// function confirmDelete(postId) {
-//     if (confirm('Are you sure you want to delete this post?')) {
-//         window.location.href = '/blogging-software/src/controllers/delete_posts.php?id=' + postId;
-//     }
-// }
+<script> 
 
 function confirmDelete(postId) {
-    if(confirm('Permanently delete this post?')) {
-        fetch(`/blogging-software/src/controllers/delete_posts.php?id=${postId}`)
+    if(confirm('Are you sure you want to permanently delete this post?')) {
+        fetch(`/blogging-software/src/controllers/delete_posts.php?id=${postId}`, {
+            credentials:"same-origin",
+            redirect: "manual" // to handle redirects manually
+        })
             .then(response => {
-                if(response.redirected) window.location.href = response.url;
+                if(response.status === 302 || response.ok) {
+                    //Success - either got redirect or OK status
+                    window.location.reload();
+                } else {
+                    throw new Error('HTTP error - status: ${response.status}');
+                }    
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Delete error:', error);
+                alert('Failed to delete post. Please try again');
+            });    
     }
 }
 </script>

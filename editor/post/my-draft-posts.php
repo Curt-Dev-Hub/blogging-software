@@ -42,8 +42,8 @@ require_once '../../includes/header.php';
             echo "<td>" . htmlspecialchars($draft['title'], ENT_QUOTES, 'UTF-8') . "</td>";
             echo "<td>" . $draft['created_at'] . "</td>";
             echo "<td>";
-            echo "<a href='edit-draft.php?id=" . $draft['id'] . "' class='btn btn-primary'>Edit</a> ";
-            echo "<a href='delete-draft.php?id=" . $draft['id'] . "' class='btn btn-danger'>Delete</a>";
+            echo "<a href='../post/post.php?id=" . $draft['id'] . "' class='btn btn-primary'>Edit</a> ";
+            echo "<button onclick='confirmDelete({$draft['id']})' class='btn btn-danger'>Delete</button>";
             echo "</td>";
             echo "</tr>";
         }
@@ -54,5 +54,25 @@ require_once '../../includes/header.php';
     }
     ?>
 </div>
+<script>
+function confirmDelete(postId) {
+    if(confirm('Are you sure you want to permanently delete this post?')) {
+        fetch(`/blogging-software/src/controllers/delete_posts.php?id=${postId}`, {
+            credentials:"same-origin"
+        })
+            .then(response => {
+                if(response.ok) {
+                    window.location.reload();
+                } else {
+                    throw new Error('Delete Failed');
+                }    
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to delete post. Please try again');
+            });    
+    }
+}
+</script>
 </body>
 </html>

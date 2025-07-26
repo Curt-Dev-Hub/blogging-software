@@ -12,6 +12,7 @@ html {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-left: 13px;
 }
 
 .post {
@@ -23,10 +24,11 @@ html {
     background-color: #f9f9f9;
     width: 30%;
     align-items: center;
-    height: 200px;
+    height: 216px;
     justify-content: center;
     box-shadow:  0 2px 5px rgba(0,0,0,0.1);
     transition: background-color 0.3s;
+    border-left: 4px solid #28a745;
 }
 .post:hover {
     background-color: #7ee0f6;
@@ -34,6 +36,7 @@ html {
 .post-link {
     text-transform: uppercase;
     text-decoration: none;
+    text-align: center;
 }
 
 .post-link:visited {
@@ -62,4 +65,42 @@ html {
 
 .btn-danger:hover {
     background: #c0392b;
+}
+
+/* draft post styling */
+.draft-post {
+    opacity: 0.8;
+    border-left: 4px solid #ffc107;
+}
+
+.draft-badge {
+    background: #ffc107;
+    color: #333;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.draft-text {
+    color: red;
+    font-weight: bold;
+}
+
+/* success message  */
+.success-message .error-message {
+    border: solid 1px black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background: greenyellow;
+}
+
+.error-message {
+    background-color: red;
+    color: cornsilk;
+    font-weight: bolder;
 }
