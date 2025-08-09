@@ -18,7 +18,6 @@ require_once '../includes/header.php';
     </div>
 
     <?php
-    // Check for errors
     if (isset($_GET['errors'])) {
         $errors = urldecode($_GET['errors']);
         // Try to decode as JSON first
@@ -48,7 +47,8 @@ require_once '../includes/header.php';
                 name="username"
                 value="<?= $username_value ?>"
                 class=<?= !empty($username_err) ? 'input-error' : '' ?>
-                required>
+                required
+                autofocus>
             <?php if (!empty($username_err)) : ?>
                 <div class="error-message"><?= htmlspecialchars($username_err) ?></div>
                 <?php endif; ?>

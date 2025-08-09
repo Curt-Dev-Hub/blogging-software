@@ -1,5 +1,17 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) 
+{
+    session_start([
+        'cookie_httponly' => true,
+        'cookie_secure' => isset($_SERVER['HTTPS']),
+        'use_strict_mode' => true
+    ]);
+} 
+elseif(session_status() === PHP_SESSION_DISABLED)
+{
+    error_log("Sessions are disabled");
+}
+
 
 require_once __DIR__ . '/../public/assets/css/css_paths.php';
 require_once __DIR__ . '/helpers.php';
@@ -13,12 +25,12 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./public/assets/images/blogging-software-ico.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/blogging-software/public/assets/images/blogging-software-ico.ico" type="image/x-icon"/>
     <title><?= htmlspecialchars($page_title ?? 'Blog Central') ?></title>
     <meta name="description" content="A platform to create and share blogs using markdown.">
     <meta name="keywords" content="blog, markdown, create, share">
     <meta name="author" content="Curt King">
-    <link rel="stylesheet" href="<?= "../fonts/roboto.css" ?>">
+    <link rel="stylesheet" href="<?= "/blogging-software/fonts/roboto.css" ?>">
     <link rel="stylesheet" href="<?= CSS_HEADER ?>">
     <?php foreach ($page_css as $css_file): ?>
         <link rel="stylesheet" href="<?= htmlspecialchars($css_file) ?>">
@@ -54,7 +66,7 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
                     <?= $is_logged_in ? 'My Dashboard' : 'Demo' ?>
                 </a></li>
                 
-                <li><a href="<?= base_url('/public/markdown-guide.html') ?>">
+                <li><a href="<?= base_url('/public/markdown-guide.html') ?>" target="_blank">
                     <i class="icon-help"></i> Markdown Guide
                 </a></li>
             </ul>

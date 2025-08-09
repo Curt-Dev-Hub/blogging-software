@@ -65,7 +65,12 @@ try {
             WHERE id = ? AND user_id = ?
         ");
 
-        //! Want To Add in Further Validation of Title, Summary and Content Before Binding
+        // Enhanced validation before binding
+        if(!is_string($title) || !is_string($summary) || ($post_id !== null && !is_int($post_id)))
+        {
+            $_SESSION['errors'] = ["Invalid parameter types - data validation failed"];
+            throw new Exception("Invalid parameter types");
+        }
 
         $stmt->bind_param("ssssiii",
             $title,
@@ -81,6 +86,15 @@ try {
         $stmt = $conn->prepare("INSERT INTO posts
         (user_id, title, summary, content, markdown_content, is_draft)
         VALUES (?,?,?,?,?,?)");
+
+        //! Extra Validation 
+
+        // Validation for new posts (post_id will be null/false here)
+        if(!is_string($title) || !is_string($summary))
+        {
+            $_SESSION['errors'] = ["Invalid parameter types - data validation failed"];
+            throw new Exception("Invalid parameter types");
+        }
         
         $stmt->bind_param("issssi", $_SESSION['user_id'], $title, $summary, $html_content, $markdown_content, $is_draft);
     }    

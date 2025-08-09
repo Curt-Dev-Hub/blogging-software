@@ -48,7 +48,8 @@
                    name="username" 
                    value="<?= $username_value ?>" 
                    required
-                   class="<?= !empty($username_err) ? 'input-error' : '' ?>">
+                   class="<?= !empty($username_err) ? 'input-error' : '' ?>"
+                   autofocus>
                    <?php if (!empty($username_err)): ?>
                 <div class="error-message"><?= htmlspecialchars($username_err) ?></div>
             <?php endif; ?>

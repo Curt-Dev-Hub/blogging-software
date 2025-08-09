@@ -3,9 +3,7 @@ html {
 }
 
 body {
-    /* font-family: Arial, sans-serif; */
-    background-color: #e6f2ff; /* A calming green-blue background */
-    padding: 20px;
+    background-color: #e6f2ff;
 }
 
 h1 {
@@ -78,4 +76,140 @@ button[type=button]:hover {
     display: flex;
     justify-content: space-evenly;
     margin-top: 45px;
+}
+
+/* link styles */
+.doc-link {
+  color: wheat;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 2px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  background: linear-gradient(120deg, transparent 0%, transparent 50%, #4CAF50 50%);
+  background-size: 220% 100%;
+  background-position: 100% 0;
+}
+
+.doc-link:hover {
+  color: black;
+  background-position: 0 0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.3);
+}
+
+.doc-link:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+.doc-link:active {
+  transform: translateY(0);
+}
+
+/* Optional Alternative - still need to test: Underline Animation Style */
+.doc-link-underline {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 2px 0;
+  transition: color 0.3s ease;
+}
+
+.doc-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4CAF50, #3e8e41);
+  transition: width 0.3s ease;
+}
+
+.doc-link-underline:hover {
+  color: #3e8e41;
+}
+
+.doc-link-underline:hover::after {
+  width: 100%;
+}
+
+/* Optional Alternative: Badge Style - still need to test*/
+.doc-link-badge {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 4px 12px;
+  border: 2px solid #4CAF50;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 0 2px;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+
+.doc-link-badge:hover {
+  background-color: #4CAF50;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+/* Potential Alternative: Modern Minimal Style */
+.doc-link-minimal {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.doc-link-minimal:hover {
+  color: #3e8e41;
+  text-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.doc-link-minimal::before {
+  content: '→ ';
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.doc-link-minimal:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* External Link Icon */
+.doc-link-external {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-right: 18px;
+  transition: all 0.3s ease;
+}
+
+.doc-link-external::after {
+  content: '↗';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.8em;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.doc-link-external:hover {
+  color: #3e8e41;
+  transform: translateY(-1px);
+}
+
+.doc-link-external:hover::after {
+  opacity: 1;
+  transform: translate(2px, -2px);
 }
