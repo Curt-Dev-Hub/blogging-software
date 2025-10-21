@@ -6,12 +6,23 @@ ini_set('display_startup_errors', 1);
 
 include_once 'public/assets/css/css_paths.php';
 $page_title = " Home | Markdown Blogging Platform";
-$page_css = [
-    CSS_HEADER
-];
+$page_css = [];
 
 require_once __DIR__ . '/includes/header.php';
 ?>
+
+<ul class="background">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 
 <main class="landing-page">
     <section class="hero">

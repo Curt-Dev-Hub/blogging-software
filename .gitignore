@@ -5,6 +5,8 @@ docker-volumes/
 # IDE-specific files
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS-specific files
 .DS_Store
@@ -21,14 +23,24 @@ Thumbs.db
 # App 
 config/
 
+# logs
+*.log
+logs/
+
 # Docker Compose
 docker-compose.override.yml
+docker-compose.yml
 
 temp/*
 
 # specific files
 notes.txt  
 sql_change_port.txt
-docker-compose.yml
 .env
+*.env.local
 *.secret
+
+# Database specific
+db-dumps/*.sql
+*.sqlite
+*.sqlite-journal

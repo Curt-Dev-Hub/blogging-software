@@ -28,6 +28,7 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
     <link rel="shortcut icon" href="/blogging-software/public/assets/images/blogging-software-ico.ico" type="image/x-icon"/>
     <title><?= htmlspecialchars($page_title ?? 'Blog Central') ?></title>
     <meta name="description" content="A platform to create and share blogs using markdown.">
+    <script src="https://kit.fontawesome.com/4e5953b453.js" crossorigin="anonymous"></script>
     <meta name="keywords" content="blog, markdown, create, share">
     <meta name="author" content="Curt King">
     <link rel="stylesheet" href="<?= "/blogging-software/fonts/roboto.css" ?>">
