@@ -44,3 +44,4 @@ sql_change_port.txt
 db-dumps/*.sql
 *.sqlite
 *.sqlite-journal
+/vendor/

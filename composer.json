@@ -1,0 +1,19 @@
+{
+    "name": "marlon-mathers/blogging-software",
+    "description": "A blogging platform with user management",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MarlonMathers\\BloggingSoftware\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "curt-dev-hub",
+            "email": "curt_king@coolsite.net"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^7.0"
+    }
+}

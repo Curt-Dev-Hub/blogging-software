@@ -54,20 +54,20 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
 
             <ul class="nav-links" id="navLinks">
                 <?php if($is_logged_in): ?>
-                    <li><a href="<?= base_url('/src/controllers/logout-process.php') ?>">Logout</a></li>
-                    <li><a href="<?= base_url('/editor/post/post.php') ?>" class="new-post-btn">
+                    <li><a class="form-nav-links" href="<?= base_url('/src/controllers/logout-process.php') ?>">Logout</a></li>
+                    <li><a class="form-nav-links" href="<?= base_url('/editor/post/post.php') ?>" class="new-post-btn">
                         <i class="icon-plus"></i> New Post
                     </a></li>
                 <?php else: ?>
-                    <li><a href="<?= base_url('/public/admin-login.php') ?>">Login</a></li>
-                    <li><a href="<?= base_url('/public/registration.php') ?>">Register</a></li>
+                    <li><a class="form-nav-links" href="<?= base_url('/public/admin-login.php') ?>">Login</a></li>
+                    <li><a class="form-nav-links" href="<?= base_url('/public/registration.php') ?>">Register</a></li>
                 <?php endif; ?>
                 
-                <li><a href="<?= base_url('/public/admin-dashboard.php') ?>">
+                <li><a class="form-nav-links" href="<?= base_url('/public/admin-dashboard.php') ?>">
                     <?= $is_logged_in ? 'My Dashboard' : 'Demo' ?>
                 </a></li>
                 
-                <li><a href="<?= base_url('/public/markdown-guide.html') ?>" target="_blank">
+                <li><a class="form-nav-links" href="<?= base_url('/public/markdown-guide.html') ?>" target="_blank">
                     <i class="icon-help"></i> Markdown Guide
                 </a></li>
             </ul>
@@ -75,27 +75,25 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
     </header>
 
     <script>
-        // Mobile menu functionality
+        // mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuButton = document.getElementById('mobileMenuButton');
             const navLinks = document.getElementById('navLinks');
             const overlay = document.getElementById('mobileMenuOverlay');
-            
-            // Toggle mobile menu
+                
             function toggleMobileMenu() {
                 mobileMenuButton.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 overlay.classList.toggle('active');
                 
-                // Prevent body scroll when menu is open
+                // prevent body scroll when menu is open
                 if (navLinks.classList.contains('active')) {
                     document.body.style.overflow = 'hidden';
                 } else {
                     document.body.style.overflow = '';
                 }
             }
-            
-            // Close mobile menu
+        
             function closeMobileMenu() {
                 mobileMenuButton.classList.remove('active');
                 navLinks.classList.remove('active');
@@ -103,17 +101,16 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
                 document.body.style.overflow = '';
             }
             
-            // Event listeners
             mobileMenuButton.addEventListener('click', toggleMobileMenu);
             overlay.addEventListener('click', closeMobileMenu);
             
-            // Close menu when clicking on a nav link
+            // close menu when clicking on a nav link
             const navLinksItems = navLinks.querySelectorAll('a');
             navLinksItems.forEach(link => {
                 link.addEventListener('click', closeMobileMenu);
             });
             
-            // Close menu on window resize if open
+            // close menu on window resize if open
             window.addEventListener('resize', function() {
                 if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
                     closeMobileMenu();

@@ -16,14 +16,27 @@ body {
     border-radius: 10px 10px 0px 0px;
     padding: 20px;
 }
+
+form, .header {
+    width: 90%;
+    max-width: 500px;
+}
+
 form, .content {
-    width: 40%;
     margin: 0px auto;
     padding: 20px;
     border: 1px solid #B0C4DE;
     background: white;
     border-radius: 0px 0px 10px 10px;
 }
+
+/* optional - different style for the paragraph text containing links */
+p {
+    text-align: center;
+    margin: 15px 0;
+    color: #555;
+}
+/* ------------------------------------------------------------------------------------------------------------ */
 .input-group {
     margin: 10px 0px 10px 0px;
 }
@@ -101,8 +114,14 @@ form, .content {
     color: #28a745;
     font-size: 0.875rem;
     margin-top: 0.25rem;
+    display: flex;
+    justify-content: center;
 }
 .input-error {
     border-color: #dc3545 !important;
+}
+
+.auth-container {
+    text-align: center;
 }
 

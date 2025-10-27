@@ -1,5 +1,4 @@
 <?php 
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -13,17 +12,29 @@ $page_css = [
 
 require_once '../includes/header.php';
 ?>  
+    <?php
+    if (isset($_SESSION['success_message'])) 
+    {
+        echo '<div class="success-message">';
+            echo '<p>' . htmlspecialchars($_SESSION["success_message"]) . '</p>';
+        echo '</div>';
+        unset($_SESSION['success_message']);
+    }
+    ?>
     <div class="header">
         <h1>Enter Your Admin Login Details</h1>
     </div>
-
+    
     <?php
-    if (isset($_GET['errors'])) {
+    // set error messages
+    if (isset($_GET['errors'])) 
+    {
         $errors = urldecode($_GET['errors']);
         // Try to decode as JSON first
         $decoded_errors = json_decode($errors, true);
 
-        if ($decoded_errors && is_array($decoded_errors)) {
+        if ($decoded_errors && is_array($decoded_errors)) 
+        {
             // If it's a JSON object with specific field errors
             $username_err = $decoded_errors['username'] ?? '';
             $password_err = $decoded_errors['password_1'] ?? '';
@@ -32,7 +43,7 @@ require_once '../includes/header.php';
             $general_error = htmlspecialchars($errors);
         }
     }
-
+    
     $username_value = isset($_GET['username']) ? htmlspecialchars($_GET['username']) : '';
     ?>
 
@@ -51,22 +62,23 @@ require_once '../includes/header.php';
                 autofocus>
             <?php if (!empty($username_err)) : ?>
                 <div class="error-message"><?= htmlspecialchars($username_err) ?></div>
-                <?php endif; ?>
-                </div>
-                <div class="input-group">
-                    <label>Password</label>
-                    <input type="password"
-                        name="password_1"
-                        class="<?= !empty($password_err) ? 'input-error' : '' ?>"
-                        required>
-                    <?php if (!empty($password_err)): ?>
-                        <div class="error-message"><?= htmlspecialchars($password_err) ?></div>
-                    <?php endif; ?>
-                </div>
-                <div class="input-group">
-                    <button type="submit" class="btn" name="login_btn">Login Now</button>
-                </div>
-                <p>Not yet a member? <a href="./registration.php">Register Here</a></p>
+            <?php endif; ?>
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input type="password"
+                name="password_1"
+                class="<?= !empty($password_err) ? 'input-error' : '' ?>"
+                required>
+            <?php if (!empty($password_err)): ?>
+                <div class="error-message"><?= htmlspecialchars($password_err) ?></div>
+            <?php endif; ?>
+        </div>
+        <div class="input-group">
+            <button type="submit" class="btn" name="login_btn">Login Now</button>
+        </div>
+        <p>Not yet a member? <a class="form-nav-links" href="./registration.php">Register Here</a></p>
+        <p>Forgotten your password? <a class="form-nav-links" href="./forgot-password.php">Reset it here</a></p>
     </form>
 </body>
 </html>
