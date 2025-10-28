@@ -43,6 +43,7 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
         <nav aria-label="Main navigation">
             <div class="logo">
                 <a href="<?= base_url('/') ?>">Blog Central</a>
+                <i class="fa-solid fa-pencil"></i>
             </div>
 
             <!-- mobile menu -->
@@ -53,10 +54,14 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
             </button>
 
             <ul class="nav-links" id="navLinks">
+                <div class="logo">
+                <a href="<?= base_url('/') ?>">Blog Central</a>
+                    <i class="fa-solid fa-pencil"></i>
+                </div>
                 <?php if($is_logged_in): ?>
                     <li><a class="form-nav-links" href="<?= base_url('/src/controllers/logout-process.php') ?>">Logout</a></li>
                     <li><a class="form-nav-links" href="<?= base_url('/editor/post/post.php') ?>" class="new-post-btn">
-                        <i class="icon-plus"></i> New Post
+                        <i class="fa-solid fa-plus"></i> New Post
                     </a></li>
                 <?php else: ?>
                     <li><a class="form-nav-links" href="<?= base_url('/public/admin-login.php') ?>">Login</a></li>

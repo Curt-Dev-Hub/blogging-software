@@ -23,6 +23,12 @@ header {
     align-items: center;
 }
 
+.logo {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+
 .logo a {
     font-size: 1.5rem;
     font-weight: bold;
@@ -30,11 +36,15 @@ header {
     text-decoration: none;
 }
 
+.fa-pencil {
+  color: white;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1rem;
-    margin: 5px; /* testing */
+    gap: 2rem;
+    margin: 9px; /* testing */
     padding: 0;
 }
 
@@ -244,6 +254,14 @@ footer {
 /* -------------------------------------------------------------- */
 
 /* Mobile Styles */
+
+@media (min-width: 768px) {
+  #navLinks > .logo   {
+    display: none;
+  }
+}
+
+
 @media (max-width: 768px) {
   header {
     padding: 1rem;
@@ -252,7 +270,7 @@ footer {
   nav {
     position: relative;
   }
-  
+
   .mobile-menu-button {
     display: flex; /* Show on mobile */
   }
@@ -290,7 +308,7 @@ footer {
   }
   
   .nav-links a:hover {
-    background-color: #ff6600;
+    color: #ff6600;
     padding-left: 1rem;
   }
   

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -6,13 +5,15 @@ ini_set('display_startup_errors', 1);
 session_start();
 
 
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) 
+{
     echo "Please sign in";
     header('Location: admin-login.php');
     exit;
 }
 
-if (isset($_GET['registration']) && $_GET['registration'] === 'success') {
+if (isset($_GET['registration']) && $_GET['registration'] === 'success') 
+{
     echo "<div class='success-message'>Registration successful!</div>";
 }
 
@@ -27,12 +28,12 @@ require_once '../includes/header.php';
 ?>
 <div class="dashboard-container">
     <div class="dashboard-wrapper">
-        <!-- Conditional Rendering for new users -->
+        
         <div class="success-toast" style="display: none;" id="successToast">
             <i class="fas fa-check-circle"></i>
             Registration successful!
         </div>
-        <!-- Header Section -->
+        
         <div class="header-section">
             <h1 class="welcome-title">Welcome Back <?php echo $_SESSION['user_name'] ?>!</h1>
             <p class="welcome-subtitle">What would you like to do today?</p>
@@ -44,7 +45,7 @@ require_once '../includes/header.php';
             </div>
         </div>
 
-        <!-- new Action cards grid -->
+        <!-- action cards grid -->
         <div class="dashboard-grid">
             <div class="action-card" onclick="navigateTo('../editor/post/post.php')">
                 <div class="card-icon create">
@@ -78,13 +79,6 @@ require_once '../includes/header.php';
                 <p class="card-description">Continue working on your saved drafts and unpublished content</p>
             </div>
         </div>
-        <!-- Previous Iteration ----------- -->
-        <!-- <div class="choice-group">
-            <button type="button" onclick="window.location.href = '../editor/post/post.php';">Create New Post</button>
-            <button type="button" onclick="window.location.href = '../public/view-posts.php';">View My Posts</button>
-            <button type="button">Delete Post</button>
-            <button type="button" onclick="window.location.href = '../editor/post/my-draft-posts.php';">Go to Drafts</button>
-        </div> -->
 
         <!-- logout section -->
         <div class="logout-section">
@@ -96,20 +90,19 @@ require_once '../includes/header.php';
     </div>
 </div>
 <script>
-        // Navigation function
+        // navigation function
         function navigateTo(url) {
             window.location.href = url;
         }
 
-        // Delete post handler
+        //TODO Delete post handler - need to implement 
         function handleDeletePost() {
             if (confirm('Are you sure you want to delete a post? This action cannot be undone.')) {
-                // Add your delete post logic here
+                //TODO Add delete post logic
                 alert('Delete post functionality would be implemented here');
             }
         }
 
-        // Show success toast if registration was successful
         function showSuccessToast() {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('registration') === 'success') {
@@ -120,11 +113,11 @@ require_once '../includes/header.php';
             }
         }
 
-        // Initialize
+        // initialize
         document.addEventListener('DOMContentLoaded', function() {
             showSuccessToast();
             
-            // Add keyboard navigation
+            // keyboard navigation support
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape') {
                     document.getElementById('successToast').style.display = 'none';
@@ -132,7 +125,7 @@ require_once '../includes/header.php';
             });
         });
 
-        // Add subtle parallax effect
+        //TODO subtle parallax effect - need to review
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.dashboard-container');

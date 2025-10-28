@@ -1,4 +1,12 @@
-/* Drafts Container  */
+body {
+    background-color: #F7FAFC;
+}
+
+/* drafts wrapper */
+.drafts-wrapper {
+    min-height: calc(100vh - 200px);
+}
+/* drafts container */
 .container {
     max-width: 1000px;
     margin: 2rem auto;
@@ -10,9 +18,16 @@
     color: #2c3e50;
     margin: 2rem 0;
     font-weight: 300;
+    font-size: 2rem;
 }
 
-/* Table Styles */
+/* table Responsive Wrapper */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* table Styles */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -27,6 +42,8 @@
     color: white;
     padding: 1rem;
     text-align: left;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .table td {
@@ -39,11 +56,23 @@
     border-bottom: none;
 }
 
-.table-striped tr:nth-child(even) {
+.table-striped tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-/* Action Buttons */
+
+.table-striped tbody tr:hover {
+    background-color: #f0f8ff;
+}
+
+/* action Buttons Container */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+
 .btn {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -51,7 +80,10 @@
     text-decoration: none;
     font-weight: 500;
     transition: all 0.2s;
-    margin-right: 0.5rem;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-align: center;
 }
 
 .btn-primary {
@@ -62,6 +94,8 @@
 
 .btn-primary:hover {
     background: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .btn-danger {
@@ -72,13 +106,17 @@
 
 .btn-danger:hover {
     background: #c0392b;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Empty State */
+/* for empty State */
 .no-drafts {
     text-align: center;
     padding: 3rem;
     color: #7f8c8d;
+    max-width: 500px;
+    margin: 2rem auto;
 }
 
 .no-drafts:before {
@@ -88,17 +126,125 @@
     margin-bottom: 1rem;
 }
 
+.no-drafts h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.no-drafts a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.no-drafts a:hover {
+    text-decoration: underline;
+}
+
+
+/* tablet Styles */
 @media (max-width: 768px) {
-    .table thead { display: none; }
-    .table tr { display: block; margin-bottom: 1rem; }
-    .table td {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
+    .text-center {
+        font-size: 1.5rem;
+        margin: 1rem 0;
     }
+    
+    .container {
+        padding: 0 0.5rem;
+    }
+    
+    
+    .table thead {
+        display: none;
+    }
+    
+    
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e1e1e1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .table tbody tr:hover {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* stack table cells */
+    .table td {
+        display: block;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    
+    .table td:last-child {
+        border-bottom: none;
+    }
+    
+    .table td:first-child {
+        background: #2980b9;
+        color: #fff;
+    }
+
+    /* adding labels before content */
     .table td:before {
         content: attr(data-label);
         font-weight: bold;
-        margin-right: 1rem;
+        color: #2c3e50;
+        display: block;
+        margin-bottom: 0.25rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        align-items: center;
+    }
+    
+    /* reducing width of action buttons on small screens */
+    .btn {
+        width: 70%;
+        padding: 0.75rem 1rem;
+    }
+    
+    .no-drafts {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    .text-center {
+        font-size: 1.25rem;
+    }
+    
+    .table td {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .table td:before {
+        font-size: 0.8rem;
+    }
+    
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.65rem 0.85rem;
+    }
+    
+    .no-drafts:before {
+        font-size: 2.5rem;
+    }
+}
+
+/* Ensure proper spacing after header */
+@media (max-width: 768px) {
+    .drafts-wrapper {
+        padding-top: 70px;
     }
 }
