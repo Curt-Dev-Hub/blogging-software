@@ -45,13 +45,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST')
         }
     }
     
-    // Always show success message (security best practice)
+    // show success message (security best practice)
     $_SESSION['success_message'] = "If that email exists in our system, a reset link has been sent.";
     header('Location: /blogging-software/public/admin-login.php');
     exit;
 }
-
-
-
-//! NOTES: No success message shown when email successfully sent
-//! URL for password resets - http://localhost/blogging-software/public/reset-password.php?token=703f3f7c36aa5306678e132c5c3d57fc478472f28b324e7c211373773809bede

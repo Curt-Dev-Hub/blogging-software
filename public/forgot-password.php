@@ -11,7 +11,6 @@ require_once '../includes/header.php';
 
 ?>
 
-<!--Check extra security needed here or on backend -->
 <div class="auth-container">
     <div class="header">
         <h1>Reset Your Password</h1>

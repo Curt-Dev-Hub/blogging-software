@@ -74,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"] === 'POST')
                 SELECT pr.user_id, u.user_name FROM password_resets pr
                 JOIN admin_user u ON pr.user_id = u.id
                 WHERE pr.token = ?
-                AND pr.created_at > DATE_SUB(NOW(), INTERVAL 2 HOUR)
+                AND pr.created_at > DATE_SUB(NOW(), INTERVAL 30 MINUTE)
                 AND pr.used = 0");
 
             $stmt->bind_param("s", $token);
