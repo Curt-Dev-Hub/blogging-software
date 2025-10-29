@@ -59,7 +59,7 @@ $is_logged_in = isset($_SESSION['user_id']) && $_SESSION['logged_in'];
                     <i class="fa-solid fa-pencil"></i>
                 </div>
                 <?php if($is_logged_in): ?>
-                    <li><a class="form-nav-links" href="<?= base_url('/src/controllers/logout-process.php') ?>">Logout</a></li>
+                    <li><a class="form-nav-links" href="<?= base_url('/src/controllers/logout-process.php?logout=true') ?>">Logout</a></li>
                     <li><a class="form-nav-links" href="<?= base_url('/editor/post/post.php') ?>" class="new-post-btn">
                         <i class="fa-solid fa-plus"></i> New Post
                     </a></li>

@@ -79,10 +79,9 @@ require_once '../includes/header.php';
                 <p class="card-description">Continue working on your saved drafts and unpublished content</p>
             </div>
         </div>
-
-        <!-- logout section -->
+        
         <div class="logout-section">
-            <a href="../src/controllers/logout-process.php" class="logout-btn">
+            <a href="../src/controllers/logout-process.php?logout=true" class="logout-btn">
                 <i class="fas fa-sign-out-alt"></i>
                 Logout
             </a>
